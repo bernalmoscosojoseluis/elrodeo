@@ -39,7 +39,7 @@ use yii\helpers\Url;
     </div>
     <div class="col-lg-3">
     <br>    
-    <?= Html::button(Yii::t('app', 'Crear Area de Trabajo'), ['value'=>Url::to(['areatrabajo/create']),'class' => 'btn btn-success','id'=>'modalButton']) ?>
+    <?= Html::button(Yii::t('app', 'Crear Area de Trabajo'), ['value'=>Url::to(['areatrabajo/createajax']),'class' => 'btn btn-success','id'=>'modalButton']) ?>
     </div>
 
     <div class="col-lg-6">    
