@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `empleado` (
   `apellidos` varchar(255) NOT NULL,
   `telefono` varchar(10) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `area_trabajo_id` int(11) NOT NULL,
+  `areatrabajo_id` int(11) NOT NULL,
   `ocupacion` varchar(100) NOT NULL,
   `estadocivil` varchar(100) NOT NULL,
   `elminado` tinyint(1) NOT NULL DEFAULT '0',

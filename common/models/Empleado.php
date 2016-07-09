@@ -58,7 +58,7 @@ class Empleado extends \yii\db\ActiveRecord
             [['ocupacion', 'estadocivil'], 'string', 'max' => 100],
         ];
     }
-
+    
     /**
      * @inheritdoc
      */
