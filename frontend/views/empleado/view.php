@@ -2,7 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-
+use yii\bootstrap\Modal;
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model common\models\Empleado */
 
@@ -41,7 +42,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'sueldomes',
         ],
     ]) ?>
+    <div class="col-lg-3">
+    <br>    
+    <?= Html::button(Yii::t('app', 'Asignar Vacacciones'), ['value'=>Url::to(['empleado/createvacaciones','id'=>$model->id]),'class' => 'btn btn-success','id'=>'modalButton']) ?>
+    </div>
 
-
+<?php 
+        Modal::begin([
+                //'header'=>'<h1>Actualizar Area de Trabajo</h1>',
+                'id'=>'modal',
+                'size'=>'modal-lg',
+            ]);
+        echo "<div id='modalContent'></div>";
+        Modal::end();
+    ?>
 
 </div>

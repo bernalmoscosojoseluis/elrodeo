@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-07-2016 a las 07:57:22
+-- Tiempo de generación: 16-07-2016 a las 01:20:20
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.5.37
 
@@ -194,10 +194,7 @@ INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_res
 
 CREATE TABLE `vacaciones` (
   `id` int(11) NOT NULL,
-  `empeado_id` int(11) NOT NULL,
-  `fecha_ingreso` date NOT NULL,
-  `años_servicio` int(11) NOT NULL,
-  `dias_disfrutar` int(11) NOT NULL,
+  `empleado_id` int(11) NOT NULL,
   `fecha_inicio_vacacion` date NOT NULL,
   `fecha_final_vacacion` date NOT NULL,
   `fecha_elaboracion_reporte` date NOT NULL,
@@ -205,6 +202,13 @@ CREATE TABLE `vacaciones` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `vacaciones`
+--
+
+INSERT INTO `vacaciones` (`id`, `empleado_id`, `fecha_inicio_vacacion`, `fecha_final_vacacion`, `fecha_elaboracion_reporte`, `observaciones`, `created_at`, `updated_at`) VALUES
+(2, 1, '2016-07-15', '2016-07-21', '2016-07-14', 'ffffff', 1468484430, 1468484430);
 
 -- --------------------------------------------------------
 
@@ -330,7 +334,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `vacaciones`
 --
 ALTER TABLE `vacaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `viatico`
 --
