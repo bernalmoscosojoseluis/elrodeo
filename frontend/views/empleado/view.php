@@ -10,22 +10,28 @@ $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Empleados', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="row">
+    
 <div class="empleado-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Actualizar', ['actualizar', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?php /*echo Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
-        ]) ?>
+        ])*/ ?>
     </p>
-     <?= Html::img( 'data:'. $model->formato . ';base64,'. $model->imagen,['width'=>200]); ?>
-
+    
+    <div align="center">
+       
+     <?= Html::img( 'data:'. $model->formato . ';base64,'. $model->imagen,['width'=>300]); ?>
+        
+    </div>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -39,9 +45,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'estadocivil',
             'fechaingreso',
             'sueldomes',
+
         ],
+        'options'=>['class'=>'table table-striped table-hover detail-view'],
     ]) ?>
 
 
+</div>
 
 </div>

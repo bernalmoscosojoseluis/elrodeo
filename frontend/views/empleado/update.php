@@ -7,12 +7,13 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model common\models\Empleado */
 
-$this->title = 'Update Empleado: ' . $model->id;
+$this->title = 'Actualizar Empleado: ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Empleados', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
-<div class="empleado-update">
+<div class="row">
+<div class="empleado-actualizar">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php 
@@ -27,5 +28,5 @@ $this->params['breadcrumbs'][] = 'Update';
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
+</div>
 </div>

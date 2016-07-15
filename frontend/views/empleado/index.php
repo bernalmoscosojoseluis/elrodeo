@@ -10,13 +10,14 @@ use yii\grid\GridView;
 $this->title = 'Empleados';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="row">
 <div class="empleado-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Empleado', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nuevo Empleado', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,14 +25,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             'CI',
             'nombres',
             'apellidos',
-            'telefono',
+            //'telefono',
             // 'email:email',
             // 'ocupacion',
-            // 'estadocivil',
+            // 'estadocivil',   
             // 'elminado',
             // 'fechaingreso',
             // 'sueldomes',
@@ -40,5 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
+            'tableOptions' => ['class' => 'table table-striped table-bordered table-hover']
     ]); ?>
+</div>
 </div>

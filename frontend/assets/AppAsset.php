@@ -12,10 +12,16 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
+        'bower_components/bootstrap/dist/css/bootstrap.min.css',
+        'bower_components/metisMenu/dist/metisMenu.min.css',
+        'dist/css/timeline.css',
+        'dist/css/sb-admin-2.css',
+        'bower_components/font-awesome/css/font-awesome.min.css',
+
     ];
     public $js = [
-        'js/validacion.js'
+        'bower_components/metisMenu/dist/metisMenu.min.js',
+        'dist/js/sb-admin-2.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

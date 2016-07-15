@@ -9,6 +9,7 @@ use yii\helpers\Url;
 /* @var $model common\models\Empleado */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<div class="row">
 
 <div class="empleado-form">
 
@@ -69,7 +70,7 @@ use yii\helpers\Url;
             <?= Html::submitButton($model->isNewRecord ? 'Guardar Datos' : 'Actualizar Datos', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
         </div>
     </div>
-
+</div>
     <?php ActiveForm::end(); ?>
 
 </div>
