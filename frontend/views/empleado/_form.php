@@ -13,6 +13,9 @@ use yii\helpers\Url;
 
 
 
+
+
+
 <div class="empleado-form">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
