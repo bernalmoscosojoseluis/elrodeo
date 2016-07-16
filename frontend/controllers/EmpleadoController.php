@@ -4,12 +4,16 @@ namespace frontend\controllers;
 
 use Yii;
 use common\models\Empleado;
+use common\models\Vacaciones;
+
+use common\models\VacacionesSearch;
 use common\models\EmpleadoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\behaviors\TimestampBehavior;
 use yii\web\UploadedFile;
+
 /**
  * EmpleadoController implements the CRUD actions for Empleado model.
  */
@@ -57,12 +61,19 @@ class EmpleadoController extends Controller
      * @return mixed
      */
     public function actionView($id)
-    {
+    {   
+        //sacamos todos los datos filtrados de las vacaciones 
+        $searchModel = new VacacionesSearch();
+       // var_dump(Yii::$app->request->queryParams);
+       // die();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        //mostramos el detalle del empleado
         $model=$this->findModel($id);
-        //var_dump(base64_decode($model->imagen));
-        //die();
+        //renderisamos a la vista view
         return $this->render('view', [
             'model' => $model,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -160,5 +171,23 @@ class EmpleadoController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+    public function actionCreatevacaciones($id)
+    {    //creamos el modelo de la vista vacaciones
+        $model=new Vacaciones();
+        //si recibimos los datos por post y validamoes los mismos
+        if ($model->load(Yii::$app->request->post())) {
+            $model->empleado_id=$id;
+            $model->fecha_elaboracion_reporte=new yii\db\Expression('NOW()');
+            $model->save();
+            //var_dump($model);
+           // die();
+            return $this->redirect(['view', 'id' => $id]);
+        }
+        //renderisamos el modelo de vacaciones
+         return $this->renderAjax('createvacaciones',[
+                'model' => $model,
+            ]);
+
     }
 }

@@ -22,6 +22,7 @@ class AppAsset extends AssetBundle
     public $js = [
         'bower_components/metisMenu/dist/metisMenu.min.js',
         'dist/js/sb-admin-2.js',
+        'js/validacion.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
