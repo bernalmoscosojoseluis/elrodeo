@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8b1ff00b-4ccb-4190-a829-14f27ce3bd89" name="Default" comment="plantillas">
+    <list default="true" id="8b1ff00b-4ccb-4190-a829-14f27ce3bd89" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/views/areatrabajo/create.php" afterPath="$PROJECT_DIR$/frontend/views/areatrabajo/create.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/views/empleado/view.php" afterPath="$PROJECT_DIR$/frontend/views/empleado/view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/views/layouts/headerNav.php" afterPath="$PROJECT_DIR$/frontend/views/layouts/headerNav.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/views/layouts/main.php" afterPath="$PROJECT_DIR$/frontend/views/layouts/main.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/views/layouts/sidebar.php" afterPath="$PROJECT_DIR$/frontend/views/layouts/sidebar.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/web/bower_components/bootstrap/less/scaffolding.less" afterPath="$PROJECT_DIR$/frontend/web/bower_components/bootstrap/less/scaffolding.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/web/dist/css/sb-admin-2.css" afterPath="$PROJECT_DIR$/frontend/web/dist/css/sb-admin-2.css" />
     </list>
     <ignored path="elrodeo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,8 +46,8 @@
       <file leaf-file-name="create.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/frontend/views/empleado/create.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="340">
+              <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -407,7 +400,7 @@
       <workItem from="1468707982828" duration="928000" />
       <workItem from="1468710533999" duration="969000" />
       <workItem from="1468771833533" duration="275000" />
-      <workItem from="1468778787899" duration="3109000" />
+      <workItem from="1468778787899" duration="3250000" />
     </task>
     <task id="LOCAL-00001" summary="Merge remote-tracking branch 'origin/Leandro'&#10;&#10;# Conflicts:&#10;#&#9;frontend/views/empleado/view.php&#10;">
       <created>1468708845617</created>
@@ -465,11 +458,18 @@
       <option name="project" value="LOCAL" />
       <updated>1468771894275</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="plantillas">
+      <created>1468781906489</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1468781906489</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6559000" />
+    <option name="totallyTimeSpent" value="6700000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -858,8 +858,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/views/empleado/create.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="340">
+          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
           <folding />
         </state>
       </provider>
