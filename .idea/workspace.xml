@@ -315,7 +315,7 @@
       <workItem from="1468705777689" duration="1278000" />
       <workItem from="1468707982828" duration="928000" />
       <workItem from="1468710533999" duration="969000" />
-      <workItem from="1468771833533" duration="41000" />
+      <workItem from="1468771833533" duration="53000" />
     </task>
     <task id="LOCAL-00001" summary="Merge remote-tracking branch 'origin/Leandro'&#10;&#10;# Conflicts:&#10;#&#9;frontend/views/empleado/view.php&#10;">
       <created>1468708845617</created>
@@ -359,11 +359,18 @@
       <option name="project" value="LOCAL" />
       <updated>1468711494296</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="sdfsdfsdfsd">
+      <created>1468771884370</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1468771884370</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3216000" />
+    <option name="totallyTimeSpent" value="3228000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
