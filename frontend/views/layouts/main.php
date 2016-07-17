@@ -28,7 +28,7 @@ $baseUrl=$asset->baseUrl;
 <div id="wrapper">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0 ;background-color:#00e676">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0 ;background-color:#ff9800">
             <?= $this->render('headerNav.php',['baseUrl'=>$baseUrl])?>
             <?= $this->render('toplinks.php',['baseUrl'=>$baseUrl])?>
             <?= $this->render('sidebar.php',['baseUrl'=>$baseUrl])?>

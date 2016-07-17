@@ -8,7 +8,7 @@ use yii\helpers\Url;
                             <a href="<?= Url::to(['empleado/index']) ?>"><i class="fa fa-group"></i> Empleado</a>
                         </li>
 
-                     
+
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
