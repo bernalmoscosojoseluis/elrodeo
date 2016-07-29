@@ -25,18 +25,29 @@ class EmpleadoController extends Controller
     public function behaviors()
     {
         return [
+        'access' => [
+            'class' => \yii\filters\AccessControl::className(),
+            'only' => ['create', 'update','createvacaciones','detallevacacion'],
+            'rules' => [
+                // deny all POST requests
+                [
+                    'allow' => false,
+                    'verbs' => ['POST']
+                ],
+                // allow authenticated users
+                [
+                    'allow' => true,
+                    'roles' => ['@'],
+                ],
+            ],
+        ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
                 ],
             ],
-            'timestamp'=>[
-                'class' => TimestampBehavior::className(),
-                'createdAtAttribute' => 'create_time',
-                'updatedAtAttribute' => 'update_time',
-                'value' => new \yii\db\Expression('NOW()'),
-            ],
+            
         ];
     }
 
@@ -108,6 +119,13 @@ class EmpleadoController extends Controller
             ]);
         }
     }
+    public function actionDetallevacacion()
+    {
+            return $this->render('detallevaciones', [
+                'model' => $model,
+            ]);
+       
+       } 
 
     /**
      * Updates an existing Empleado model.
@@ -172,6 +190,7 @@ class EmpleadoController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
     public function actionCreatevacaciones($id)
     {    //creamos el modelo de la vista vacaciones
         $model=new Vacaciones();
@@ -182,7 +201,7 @@ class EmpleadoController extends Controller
             $model->save();
             //var_dump($model);
            // die();
-            return $this->redirect(['view', 'id' => $id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
         //renderisamos el modelo de vacaciones
          return $this->renderAjax('createvacaciones',[
