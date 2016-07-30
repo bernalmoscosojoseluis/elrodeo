@@ -59,4 +59,10 @@ class Vacaciones extends \yii\db\ActiveRecord
 
         ];
     }
+    public function getDiasadisfrutar()
+    {
+        $s=date('d',strtotime($this->fecha_inicio_vacacion));
+        $d=date('d',strtotime($this->fecha_final_vacacion));
+        return $d-$s;
+    }
 }

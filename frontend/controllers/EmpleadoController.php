@@ -5,7 +5,6 @@ namespace frontend\controllers;
 use Yii;
 use common\models\Empleado;
 use common\models\Vacaciones;
-
 use common\models\VacacionesSearch;
 use common\models\EmpleadoSearch;
 use yii\web\Controller;
@@ -25,6 +24,7 @@ class EmpleadoController extends Controller
     public function behaviors()
     {
         return [
+        
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -32,11 +32,11 @@ class EmpleadoController extends Controller
                 ],
             ],
             'timestamp'=>[
-                'class' => TimestampBehavior::className(),
-                'createdAtAttribute' => 'create_time',
-                'updatedAtAttribute' => 'update_time',
-                'value' => new \yii\db\Expression('NOW()'),
-            ],
+                'class'=>TimestampBehavior::className(),
+                'createdAtAttribute'=>'create_time',
+                'createdAtAttribute'=>'update_time',
+                'value'=>new\yii\db\Expression('NOW()'),
+            ]
         ];
     }
 
@@ -66,6 +66,7 @@ class EmpleadoController extends Controller
         $searchModel = new VacacionesSearch();
        // var_dump(Yii::$app->request->queryParams);
        // die();
+       $listado = Vacaciones::find()->where(['empleado_id'=>$id])->all();       
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         //mostramos el detalle del empleado
         $model=$this->findModel($id);
@@ -74,6 +75,7 @@ class EmpleadoController extends Controller
             'model' => $model,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'listado'=>$listado,
         ]);
     }
 
@@ -108,7 +110,6 @@ class EmpleadoController extends Controller
             ]);
         }
     }
-
     /**
      * Updates an existing Empleado model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -172,13 +173,14 @@ class EmpleadoController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
     public function actionCreatevacaciones($id)
     {    //creamos el modelo de la vista vacaciones
         $model=new Vacaciones();
         //si recibimos los datos por post y validamoes los mismos
         if ($model->load(Yii::$app->request->post())) {
             $model->empleado_id=$id;
-            $model->fecha_elaboracion_reporte=new yii\db\Expression('NOW()');
+            $model->fecha_elaboracion_reporte = new yii\db\Expression('NOW()');
             $model->save();
             //var_dump($model);
            // die();

@@ -8,7 +8,7 @@ use yii\helpers\Url;
 /* @var $model common\models\Empleado */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Empleados', 'url' => ['index']];
+/*$this->params['breadcrumbs'][] = ['label' => 'Empleados', 'url' => ['index']];*/
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
@@ -60,6 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 </div>
+
 <?php
         Modal::begin([
                 //'header'=>'<h1>Actualizar Area de Trabajo</h1>',
@@ -69,6 +70,33 @@ $this->params['breadcrumbs'][] = $this->title;
         echo "<div id='modalContent'></div>";
         Modal::end();
     ?>
+ <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                      <th>Fecha Ingreso</th>
 
+                      <th>Dias a Disfrutar</th>
+                      <th>Fecha Inicial Vacaciones</th>
+                      <th>Fecha Final Vacaciones</th>
+                      <th>Dia de Inicio Labores</th>
+                      <th>Fecha Elaboracion de Reporte</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($listado as $vaca){
+                        ?>
+                        <tr>
+                        <td><?php echo $vaca->fecha_final_vacacion; ?></td>
+                        <td><?php echo $vaca->diasadisfrutar;?></td>
+                        <td><?php echo $vaca->fecha_final_vacacion;?></td>
+                        <td><?php echo $vaca->fecha_final_vacacion;?></td>
+                        <td><?php echo $vaca->fecha_final_vacacion;?></td>
+                        <td><?php echo $vaca->fecha_final_vacacion;?></td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </tbody>
+             </table>
 </div>
     
