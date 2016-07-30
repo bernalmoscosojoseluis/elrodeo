@@ -5,7 +5,6 @@ namespace frontend\controllers;
 use Yii;
 use common\models\Empleado;
 use common\models\Vacaciones;
-
 use common\models\VacacionesSearch;
 use common\models\EmpleadoSearch;
 use yii\web\Controller;
@@ -25,29 +24,19 @@ class EmpleadoController extends Controller
     public function behaviors()
     {
         return [
-        'access' => [
-            'class' => \yii\filters\AccessControl::className(),
-            'only' => ['create', 'update','createvacaciones','detallevacacion'],
-            'rules' => [
-                // deny all POST requests
-                [
-                    'allow' => false,
-                    'verbs' => ['POST']
-                ],
-                // allow authenticated users
-                [
-                    'allow' => true,
-                    'roles' => ['@'],
-                ],
-            ],
-        ],
+        
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
                 ],
             ],
-            
+            'timestamp'=>[
+                'class'=>TimestampBehavior::className(),
+                'createdAtAttribute'=>'create_time',
+                'createdAtAttribute'=>'update_time',
+                'value'=>new\yii\db\Expression('NOW()'),
+            ]
         ];
     }
 
@@ -77,6 +66,7 @@ class EmpleadoController extends Controller
         $searchModel = new VacacionesSearch();
        // var_dump(Yii::$app->request->queryParams);
        // die();
+       $listado = Vacaciones::find()->where(['empleado_id'=>$id])->all();       
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         //mostramos el detalle del empleado
         $model=$this->findModel($id);
@@ -85,6 +75,7 @@ class EmpleadoController extends Controller
             'model' => $model,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'listado'=>$listado,
         ]);
     }
 
@@ -119,14 +110,6 @@ class EmpleadoController extends Controller
             ]);
         }
     }
-    public function actionDetallevacacion()
-    {
-            return $this->render('detallevaciones', [
-                'model' => $model,
-            ]);
-       
-       } 
-
     /**
      * Updates an existing Empleado model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -197,11 +180,11 @@ class EmpleadoController extends Controller
         //si recibimos los datos por post y validamoes los mismos
         if ($model->load(Yii::$app->request->post())) {
             $model->empleado_id=$id;
-            $model->fecha_elaboracion_reporte=new yii\db\Expression('NOW()');
+            $model->fecha_elaboracion_reporte = new yii\db\Expression('NOW()');
             $model->save();
             //var_dump($model);
            // die();
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $id]);
         }
         //renderisamos el modelo de vacaciones
          return $this->renderAjax('createvacaciones',[
