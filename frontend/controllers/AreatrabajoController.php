@@ -61,12 +61,12 @@ class AreatrabajoController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreateajax()
+    public function actionCreateajax($id)
     {
         $model = new Areatrabajo();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['empleado/create']);
         } else {
             return $this->renderAjax('create', [
                 'model' => $model,
@@ -79,7 +79,7 @@ class AreatrabajoController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+        }else {
             return $this->render('create', [
                 'model' => $model,
             ]);
