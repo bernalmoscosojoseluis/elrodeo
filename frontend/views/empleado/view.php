@@ -7,7 +7,7 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model common\models\Empleado */
 
-$this->title = $model->id;
+$this->title = $model->nombres;
 /*$this->params['breadcrumbs'][] = ['label' => 'Empleados', 'url' => ['index']];*/
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Actualizar', ['actualizar', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+
         <?php /*echo Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -70,6 +70,12 @@ $this->params['breadcrumbs'][] = $this->title;
         echo "<div id='modalContent'></div>";
         Modal::end();
     ?>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
  <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                     <tr>
@@ -86,9 +92,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php foreach ($listado as $vaca){
                         ?>
                         <tr>
-                        <td><?php echo $vaca->fecha_final_vacacion; ?></td>
+                        <td><?php echo $model->fechaingreso; ?></td>
                         <td><?php echo $vaca->diasadisfrutar;?></td>
-                        <td><?php echo $vaca->fecha_final_vacacion;?></td>
+                        <td><?php echo $vaca->fecha_inicio_vacacion;?></td>
                         <td><?php echo $vaca->fecha_final_vacacion;?></td>
                         <td><?php echo $vaca->fecha_final_vacacion;?></td>
                         <td><?php echo $vaca->fecha_final_vacacion;?></td>

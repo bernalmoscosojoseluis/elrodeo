@@ -13,24 +13,24 @@ use yii\helpers\Url;
 
 <div class="empleado-form">
 
-    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
-    <div class="col-lg-6">    
+    <?php $form = ActiveForm::begin($model->isNewRecord ?['options' => ['enctype' => 'multipart/form-data']]:[]); ?>
+    <div class="col-lg-6"<?= $model->isNewRecord ? "":" style='display:none;'";?>>
     <?= $form->field($model, 'CI')->textInput(['maxlength' => true]) ?>
     </div>
     
-    <div class="col-lg-6">    
+    <div class="col-lg-6">
     <?= $form->field($model, 'nombres')->textInput(['maxlength' => true]) ?>
     </div>
 
-    <div class="col-lg-6">    
+    <div class="col-lg-6">
     <?= $form->field($model, 'apellidos')->textInput(['maxlength' => true]) ?>
     </div>
 
-    <div class="col-lg-6">    
+    <div class="col-lg-6">
     <?= $form->field($model, 'telefono')->textInput(['maxlength' => true]) ?>
     </div>
 
-    <div class="col-lg-6">    
+    <div class="col-lg-6">
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
     </div>
 
@@ -43,15 +43,15 @@ use yii\helpers\Url;
     <?= Html::button(Yii::t('app', 'Crear Area de Trabajo'), ['value'=>Url::to(['areatrabajo/createajax']),'class' => 'btn btn-success','id'=>'modalButton']) ?>
     </div>
 
-    <div class="col-lg-6">    
+    <div class="col-lg-6"<?= $model->isNewRecord ? "":" style='display:none;'";?>>
     <?= $form->field($model, 'ocupacion')->textInput(['maxlength' => true]) ?>
     </div>
 
-    <div class="col-lg-6">    
+    <div class="col-lg-6"<?= $model->isNewRecord ? "":" style='display:none;'";?>>
     <?= $form->field($model, 'estadocivil')->textInput(['maxlength' => true]) ?>
     </div>
 
-    <div class="col-lg-6">
+    <div class="col-lg-6"<?= $model->isNewRecord ? "":" style='display:none;'";?>>
     <?= $form->field($model, 'fechaingreso')->widget(\yii\jui\DatePicker::classname(), [
     'language' => 'es',
     'dateFormat' => 'yyyy-MM-dd',
@@ -62,7 +62,7 @@ use yii\helpers\Url;
     <div class="col-lg-6">
     <?= $form->field($model, 'sueldomes')->textInput(['maxlength' => true]) ?>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6"<?= $model->isNewRecord ? "":" style='display:none;'";?>>
     <?= $form->field($model, 'imageFile')->fileInput(['maxlength' => true]) ?>
     </div>
     <div class="col-lg-12">    

@@ -121,22 +121,26 @@ class EmpleadoController extends Controller
         $model = $this->findModel($id);
 
 
-        if ($model->load(Yii::$app->request->post())) {
-            $model->imageFile=UploadedFile::getInstance($model,'imageFile');
-            $size=$model->imageFile->size;
-            $temp=$model->imageFile->tempName;
-            $name=$model->imageFile->name;
-            $model->formato=$model->imageFile->type;
-            $f1= fopen($temp,'rb');
-            $foto_reconvertida = fread($f1,$size);
-            $foto_reconvertida = base64_encode($foto_reconvertida);
-            fclose($f1);
-            $model->imagen=$foto_reconvertida;
-            $model->imagenombre=$name;
-            $model->imagentamano=$size;
-            $model->save();
-            $model->imageFile->saveAs('uploads/' . $model->id . '.' . $model->imageFile->extension);
-                    return $this->redirect(['view', 'id' => $model->id]);
+        //if ($model->load(Yii::$app->request->post())) {
+        if ($modelu=Yii::$app->request->post()) {
+            var_dump($modelu);
+            exit();
+            //$model->imageFile=UploadedFile::getInstance($model,'imageFile');
+            //$size=$model->imageFile->size;
+            //$temp=$model->imageFile->tempName;
+            //$name=$model->imageFile->name;
+            //$model->formato=$model->imageFile->type;
+            //$f1= fopen($temp,'rb');
+            //$foto_reconvertida = fread($f1,$size);
+            //$foto_reconvertida = base64_encode($foto_reconvertida);
+            //fclose($f1);
+            //$model->imagen=$foto_reconvertida;
+            //$model->imagenombre=$name;
+            //$model->imagentamano=$size;
+            //$model->save();
+            //$model->imageFile->saveAs('uploads/' . $model->id . '.' . $model->imageFile->extension);
+
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
 
             return $this->render('update', [
