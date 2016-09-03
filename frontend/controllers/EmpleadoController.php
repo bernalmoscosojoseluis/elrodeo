@@ -122,9 +122,10 @@ class EmpleadoController extends Controller
 
 
         //if ($model->load(Yii::$app->request->post())) {
-        if ($modelu=Yii::$app->request->post()) {
+        if (Yii::$app->request->isPost) {
+            $modelu=Yii::$app->request->post();
             var_dump($modelu);
-            exit();
+            die();
             //$model->imageFile=UploadedFile::getInstance($model,'imageFile');
             //$size=$model->imageFile->size;
             //$temp=$model->imageFile->tempName;
