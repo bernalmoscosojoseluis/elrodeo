@@ -138,7 +138,6 @@ class EmpleadoController extends Controller
             $model->imageFile->saveAs('uploads/' . $model->id . '.' . $model->imageFile->extension);
                     return $this->redirect(['view', 'id' => $model->id]);
         } else {
-
             return $this->render('update', [
                 'model' => $model,
             ]);
