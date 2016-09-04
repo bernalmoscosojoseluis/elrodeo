@@ -50,7 +50,7 @@ class Anticipo extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'empleado_id' => 'Empleado ID',
-            'monto' => 'Monto',
+            'monto' => 'Monto Anticipo',
             'fecha_anticipo' => 'Fecha Anticipo',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',

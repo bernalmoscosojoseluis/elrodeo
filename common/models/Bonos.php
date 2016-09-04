@@ -37,6 +37,7 @@ class Bonos extends \yii\db\ActiveRecord
             [['empleado_id', 'monto'], 'required'],
             [['empleado_id'], 'integer'],
             [['monto'], 'number'],
+            [['fecha_bono'], 'safe'],
         ];
     }
 
@@ -48,7 +49,9 @@ class Bonos extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'empleado_id' => 'Empleado ID',
-            'monto' => 'Monto',
+            'monto' => 'Monto Bono',
+            'fecha_bono' => 'fecha_bono',
+
            // 'created_at' => 'Created At',
            // 'updated_at' => 'Updated At',
         ];

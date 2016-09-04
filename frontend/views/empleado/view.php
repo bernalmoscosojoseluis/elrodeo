@@ -54,7 +54,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <br>
     <?= Html::button(Yii::t('app', 'Asignar Vacacciones'), ['value'=>Url::to(['empleado/createvacaciones','id'=>$model->id]),'class' => 'btn btn-success','id'=>'modalButton']) ?>
     </div>
-
+    <div class="col-lg-3">
+        <br>
+        <?= Html::button(Yii::t('app', 'Asignar boleta'), ['value'=>Url::to(['empleado/createboleta','id'=>$model->id]),'class' => 'btn btn-success','id'=>'modalButton1']) ?>
+    </div>
+    <div class="col-lg-3">
+        <br>
+        <?= Html::button(Yii::t('app', 'Reporte'), ['value'=>Url::to(['empleado/createreporte']),'class' => 'btn btn-success']) ?>
+    </div>
 
 </div>
 <?php
@@ -66,6 +73,15 @@ $this->params['breadcrumbs'][] = $this->title;
         echo "<div id='modalContent'></div>";
         Modal::end();
     ?>
+    <?php
+    Modal::begin([
+        'id'=>'modal1',
+        'size'=>'modal-lg',
+    ]);
+    echo "<div id='modalContent1'></div>";
+    Modal::end();
+    ?>
+
 
 </div>
     
