@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
      <?= Html::img( 'data:'. $model->formato . ';base64,'. $model->imagen,['width'=>300]); ?>
 
     </div>
+    <br>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -51,6 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'options'=>['class'=>'table table-striped table-hover detail-view'],
     ]) ?>
     <div class="col-lg-3">
+
     <br>
     <?= Html::button(Yii::t('app', 'Asignar Vacacciones'), ['value'=>Url::to(['empleado/createvacaciones','id'=>$model->id]),'class' => 'btn btn-success','id'=>'modalButton']) ?>
     </div>
@@ -62,6 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <br>
         <?= Html::button(Yii::t('app', 'Reporte'), ['value'=>Url::to(['empleado/createreporte']),'class' => 'btn btn-success']) ?>
     </div>
+
 
 </div>
 <?php
