@@ -8,6 +8,7 @@ use yii\bootstrap\Modal;
 /* @var $this yii\web\View */
 /* @var $model common\models\Empleado */
 
+
 $this->title = 'Nuevo Empleado';
 $this->params['breadcrumbs'][] = ['label' => 'Empleados', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -28,5 +29,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
+
 </div>
 </div>

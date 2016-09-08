@@ -2,11 +2,20 @@
 
 namespace frontend\controllers;
 
+use common\models\Boleta;
+use common\models\Sueldo;
+use common\models\Viatico;
+use common\models\Bonos;
+use common\models\Descuento;
+use common\models\Anticipo;
 use Yii;
+use mPDF;
 use common\models\Empleado;
 use common\models\Vacaciones;
+use common\models\formularioboleta;
 use common\models\VacacionesSearch;
 use common\models\EmpleadoSearch;
+use yii\db\Connection;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -24,7 +33,7 @@ class EmpleadoController extends Controller
     public function behaviors()
     {
         return [
-        
+
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -66,7 +75,7 @@ class EmpleadoController extends Controller
         $searchModel = new VacacionesSearch();
        // var_dump(Yii::$app->request->queryParams);
        // die();
-       $listado = Vacaciones::find()->where(['empleado_id'=>$id])->all();       
+       $listado = Vacaciones::find()->where(['empleado_id'=>$id])->all();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         //mostramos el detalle del empleado
         $model=$this->findModel($id);
@@ -119,7 +128,7 @@ class EmpleadoController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        
+
         if (!empty($_POST)) {
             $mpost=Yii::$app->request->post()['Empleado'];
             //var_dump($model);
@@ -148,7 +157,7 @@ class EmpleadoController extends Controller
                 $model->save(false);
            // }
 
-            
+
             //$model->imageFile->saveAs('uploads/' . $model->id . '.' . $model->imageFile->extension);
                     return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -210,6 +219,98 @@ class EmpleadoController extends Controller
     }
     public function actionreportevaciones($vacacion_id,$empleado_id)
     {
-        
+
+    }
+
+    public function actionCreateboleta($id){
+        $model=new formularioboleta();
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model1 = new Bonos();
+            $model1->monto=$model->monto_bono;
+            $model1->fecha_bono=$model->fecha_elaboracion;
+            $model1->empleado_id=$id;
+            $model1->save();
+
+            $model2= new Viatico();
+            $model2->monto=$model->monto_viatico;
+            $model2->fecha_viatico=$model->fecha_elaboracion;
+            $model2->empleado_id=$id;
+            $model2->save();
+
+            $model3= new Anticipo();
+            $model3->monto=$model->monto_anticipo;
+            $model3->fecha_anticipo=$model->fecha_elaboracion;
+            $model3->empleado_id=$id;
+            $model3->save();
+
+            $model4= new Descuento();
+            $model4->monto=$model->monto_descuento;
+            $model4->fecha_descuento=$model->fecha_elaboracion;
+            $model4->empleado_id=$id;
+            $model4->save();
+
+            return $this->redirect(['view', 'id' => $id]);
+        }
+        return $this->renderAjax('createboleta',[
+            'model' => $model,
+        ]);
+    }
+    public function actionCreatereporte($id,$inicio,$final){
+        $mpdf=new mPDF();
+        $sql5 = 'SELECT CI,nombres,apellidos,ocupacion,sueldomes FROM empleado WHERE id="' .$id. '"';
+        $sql = 'SELECT SUM(monto) AS monto FROM anticipo WHERE empleado_id="' .$id. '" AND fecha_anticipo>="' .$inicio. '" AND fecha_anticipo<="' .$final. '"';
+        $sql1 = 'SELECT SUM(monto) AS monto FROM  bonos WHERE empleado_id="' .$id. '" AND fecha_bono>="' .$inicio. '" AND fecha_bono<="' .$final. '"';
+        $sql2 = 'SELECT SUM(monto) AS monto FROM  descuento WHERE empleado_id="' .$id. '" AND fecha_descuento>="' .$inicio. '" AND fecha_descuento<="' .$final. '"';
+        $sql3 = 'SELECT SUM(monto) AS monto FROM  viatico WHERE empleado_id="' .$id. '" AND fecha_viatico>="' .$inicio. '" AND fecha_viatico<="' .$final. '"';
+        $model = Anticipo::findBySql($sql)->all();
+        $model1 = Bonos::findBySql($sql1)->all();
+        $model2 = Descuento::findBySql($sql2)->all();
+        $model3 = Viatico::findBySql($sql3)->all();
+        $model5 = Empleado::findBySql($sql5)->all();
+        $acu=0;
+        if(!empty($model5))
+        {
+            foreach($model as $anti)
+            {
+                $acu = $anti->monto + $acu;
+                foreach($model2 as $desc)
+                {
+                    $acu = $desc->monto + $acu;
+                    foreach($model5 as $sueldo)
+                    {
+                        $acu = $sueldo->sueldomes - $acu;
+                    }
+                }
+            }
+        }
+        $mpdf->useOnlyCoreFonts = true;
+        $mpdf->SetTitle("Boleta de Pago - Reporte");
+        $mpdf->SetAuthor("Jose luis");
+        //marca de agua
+        $mpdf->SetWatermarkText("Pollos El Rodeo");
+        $mpdf->showWatermarkText = true;
+        $mpdf->watermark_font = 'DejaVuSansCondensed';
+        //darle mas color a la marca de agua
+        $mpdf->watermarkTextAlpha = 0.2;
+        $mpdf->SetDisplayMode('fullpage');
+        //$mpdf->forcePortraitHeaders = true;
+        //girar la pagina horizontal
+        //$mpdf->AddPage('L');
+        $mpdf->WriteHTML($this->renderPartial('createreporte',["model"=>$model,"model1"=>$model1,"model2"=>$model2,"model3"=>$model3,"model5"=>$model5,"acu"=>$acu]));
+        $mpdf->Output();
+        exit();
+    }
+
+    public function actionCreateboletadepago($id){
+        $model=new Boleta();
+        if (!empty($_POST)){
+            $bpost=Yii::$app->request->post()['Boleta'];
+            $inicio=$bpost['fecha_inicio'];
+            $final=$bpost['fecha_final'];
+            return $this->redirect(['createreporte','id' => $id,'inicio'=>$inicio,'final'=>$final]);
+        }else {
+            return $this->renderAjax('boletadepago', ["model" => $model, "empleado_id" => $id]);
+        }
     }
 }

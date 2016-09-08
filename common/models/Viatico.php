@@ -37,6 +37,7 @@ class Viatico extends \yii\db\ActiveRecord
             [['empleado_id', 'monto'], 'required'],
             [['empleado_id'], 'integer'],
             [['monto'], 'number'],
+            [['fecha_viatico'], 'safe'],
         ];
     }
 
@@ -48,7 +49,8 @@ class Viatico extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'empleado_id' => 'Empleado ID',
-            'monto' => 'Monto',
+            'monto' => 'Monto Viatico',
+            'fecha_viatico' => 'fecha viatico',
         ];
     }
 }

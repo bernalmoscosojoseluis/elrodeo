@@ -3,7 +3,8 @@
   <component name="GitSharedSettings">
     <option name="FORCE_PUSH_PROHIBITED_PATTERNS">
       <list>
-        <option value="Leandro" />
+        <option value="joseluis" />
+        <option value="Edison" />
       </list>
     </option>
   </component>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.4.12
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-07-2016 a las 01:20:20
--- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 5.5.37
+-- Tiempo de generación: 14-08-2016 a las 17:06:47
+-- Versión del servidor: 5.6.25
+-- Versión de PHP: 5.6.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,14 +26,23 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `anticipo`
 --
 
-CREATE TABLE `anticipo` (
+CREATE TABLE IF NOT EXISTS `anticipo` (
   `id` int(11) NOT NULL,
   `empleado_id` int(11) NOT NULL,
   `monto` float NOT NULL,
   `fecha_anticipo` date NOT NULL,
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `anticipo`
+--
+
+INSERT INTO `anticipo` (`id`, `empleado_id`, `monto`, `fecha_anticipo`, `created_at`, `updated_at`) VALUES
+(2, 1, 3, '2016-08-11', 1471030241, 1471030241),
+(3, 1, 2, '2016-08-12', 1471031045, 1471031045),
+(4, 1, 5, '2016-08-28', 1471031159, 1471031159);
 
 -- --------------------------------------------------------
 
@@ -41,13 +50,13 @@ CREATE TABLE `anticipo` (
 -- Estructura de tabla para la tabla `areatrabajo`
 --
 
-CREATE TABLE `areatrabajo` (
+CREATE TABLE IF NOT EXISTS `areatrabajo` (
   `id` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `descripcion` text,
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `areatrabajo`
@@ -56,7 +65,9 @@ CREATE TABLE `areatrabajo` (
 INSERT INTO `areatrabajo` (`id`, `nombre`, `descripcion`, `created_at`, `updated_at`) VALUES
 (1, 'cocinero', 'cocinero', 1467332746, 1467332746),
 (2, 'mesero', 'mesero', 1467332809, 1467332809),
-(3, 'ayudante', 'ayudante de cocina', 1467432266, 1467432266);
+(3, 'ayudante', 'ayudante de cocina', 1467432266, 1467432266),
+(4, 'lavadero', 'lavadora de plato', 1469521368, 1469521368),
+(5, 'pela papa', 'encargado de pelar las papas y picarlas', 1469956871, 1469956871);
 
 -- --------------------------------------------------------
 
@@ -64,13 +75,23 @@ INSERT INTO `areatrabajo` (`id`, `nombre`, `descripcion`, `created_at`, `updated
 -- Estructura de tabla para la tabla `bonos`
 --
 
-CREATE TABLE `bonos` (
+CREATE TABLE IF NOT EXISTS `bonos` (
   `id` int(11) NOT NULL,
   `empleado_id` int(11) NOT NULL,
   `monto` float NOT NULL,
+  `fecha_bono` date NOT NULL,
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `bonos`
+--
+
+INSERT INTO `bonos` (`id`, `empleado_id`, `monto`, `fecha_bono`, `created_at`, `updated_at`) VALUES
+(3, 1, 1, '2016-08-11', 1471030241, 1471030241),
+(4, 1, 2, '2016-08-12', 1471031045, 1471031045),
+(5, 1, 9, '2016-08-28', 1471031159, 1471031159);
 
 -- --------------------------------------------------------
 
@@ -78,14 +99,14 @@ CREATE TABLE `bonos` (
 -- Estructura de tabla para la tabla `descuento`
 --
 
-CREATE TABLE `descuento` (
+CREATE TABLE IF NOT EXISTS `descuento` (
   `id` int(11) NOT NULL,
   `empleado_id` int(11) NOT NULL,
   `monto` float NOT NULL,
+  `fecha_descuento` date NOT NULL,
   `concepto` text NOT NULL,
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
-  `fecha_descuento` date NOT NULL
+  `updated_at` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -94,7 +115,7 @@ CREATE TABLE `descuento` (
 -- Estructura de tabla para la tabla `empleado`
 --
 
-CREATE TABLE `empleado` (
+CREATE TABLE IF NOT EXISTS `empleado` (
   `id` int(11) NOT NULL,
   `CI` varchar(10) NOT NULL,
   `nombres` varchar(255) NOT NULL,
@@ -113,7 +134,7 @@ CREATE TABLE `empleado` (
   `formato` varchar(20) NOT NULL,
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `empleado`
@@ -134,7 +155,7 @@ INSERT INTO `empleado` (`id`, `CI`, `nombres`, `apellidos`, `telefono`, `email`,
 -- Estructura de tabla para la tabla `migration`
 --
 
-CREATE TABLE `migration` (
+CREATE TABLE IF NOT EXISTS `migration` (
   `version` varchar(180) NOT NULL,
   `apply_time` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -153,7 +174,7 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 -- Estructura de tabla para la tabla `sueldo`
 --
 
-CREATE TABLE `sueldo` (
+CREATE TABLE IF NOT EXISTS `sueldo` (
   `id` int(11) NOT NULL,
   `empleado_id` int(11) NOT NULL,
   `monto` float NOT NULL,
@@ -167,7 +188,7 @@ CREATE TABLE `sueldo` (
 -- Estructura de tabla para la tabla `user`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `auth_key` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
@@ -177,7 +198,7 @@ CREATE TABLE `user` (
   `status` smallint(6) NOT NULL DEFAULT '10',
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `user`
@@ -192,7 +213,7 @@ INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_res
 -- Estructura de tabla para la tabla `vacaciones`
 --
 
-CREATE TABLE `vacaciones` (
+CREATE TABLE IF NOT EXISTS `vacaciones` (
   `id` int(11) NOT NULL,
   `empleado_id` int(11) NOT NULL,
   `fecha_inicio_vacacion` date NOT NULL,
@@ -201,14 +222,15 @@ CREATE TABLE `vacaciones` (
   `observaciones` text NOT NULL,
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `vacaciones`
 --
 
 INSERT INTO `vacaciones` (`id`, `empleado_id`, `fecha_inicio_vacacion`, `fecha_final_vacacion`, `fecha_elaboracion_reporte`, `observaciones`, `created_at`, `updated_at`) VALUES
-(2, 1, '2016-07-15', '2016-07-21', '2016-07-14', 'ffffff', 1468484430, 1468484430);
+(2, 1, '2016-07-15', '2016-07-21', '2016-07-14', 'ffffff', 1468484430, 1468484430),
+(3, 1, '2016-07-01', '2016-07-27', '2016-07-26', 'no lo se', 1469526835, 1469526835);
 
 -- --------------------------------------------------------
 
@@ -216,13 +238,23 @@ INSERT INTO `vacaciones` (`id`, `empleado_id`, `fecha_inicio_vacacion`, `fecha_f
 -- Estructura de tabla para la tabla `viatico`
 --
 
-CREATE TABLE `viatico` (
+CREATE TABLE IF NOT EXISTS `viatico` (
   `id` int(11) NOT NULL,
   `empleado_id` int(11) NOT NULL,
   `monto` float NOT NULL,
+  `fecha_viatico` date NOT NULL,
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `viatico`
+--
+
+INSERT INTO `viatico` (`id`, `empleado_id`, `monto`, `fecha_viatico`, `created_at`, `updated_at`) VALUES
+(2, 1, 2, '2016-08-11', 1471030241, 1471030241),
+(3, 1, 2, '2016-08-12', 1471031045, 1471031045),
+(4, 1, 7, '2016-08-28', 1471031159, 1471031159);
 
 --
 -- Índices para tablas volcadas
@@ -250,7 +282,8 @@ ALTER TABLE `bonos`
 -- Indices de la tabla `descuento`
 --
 ALTER TABLE `descuento`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fecha_descuento` (`fecha_descuento`);
 
 --
 -- Indices de la tabla `empleado`
@@ -299,17 +332,17 @@ ALTER TABLE `viatico`
 -- AUTO_INCREMENT de la tabla `anticipo`
 --
 ALTER TABLE `anticipo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `areatrabajo`
 --
 ALTER TABLE `areatrabajo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `bonos`
 --
 ALTER TABLE `bonos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `descuento`
 --
@@ -319,7 +352,7 @@ ALTER TABLE `descuento`
 -- AUTO_INCREMENT de la tabla `empleado`
 --
 ALTER TABLE `empleado`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `sueldo`
 --
@@ -329,17 +362,17 @@ ALTER TABLE `sueldo`
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `vacaciones`
 --
 ALTER TABLE `vacaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `viatico`
 --
 ALTER TABLE `viatico`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

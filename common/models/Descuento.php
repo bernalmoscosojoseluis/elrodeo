@@ -39,8 +39,8 @@ class Descuento extends \yii\db\ActiveRecord
             [['empleado_id', 'monto', 'concepto', 'fecha_descuento'], 'required'],
             [['empleado_id'], 'integer'],
             [['monto'], 'number'],
-            [['concepto'], 'string'],
             [['fecha_descuento'], 'safe'],
+            [['concepto'], 'string'],
         ];
     }
 
@@ -52,11 +52,11 @@ class Descuento extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'empleado_id' => 'Empleado ID',
-            'monto' => 'Monto',
-            'concepto' => 'Concepto',
+            'monto' => 'Monto Descuento',
+            'fecha_descuento' => 'Fecha Descuento',
+            'concepto' => 'Concepto Descuento',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
-            'fecha_descuento' => 'Fecha Descuento',
         ];
     }
 }
