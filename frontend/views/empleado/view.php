@@ -7,27 +7,16 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model common\models\Empleado */
 
-$this->title = $model->id;
+$this->title = $model->nombres;
 /*$this->params['breadcrumbs'][] = ['label' => 'Empleados', 'url' => ['index']];*/
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
 
 <div class="empleado-view">
-
     <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
-        <?= Html::a('Actualizar', ['actualizar', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?php /*echo Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ])*/ ?>
     </p>
-
     <div align="center">
 
      <?= Html::img( 'data:'. $model->formato . ';base64,'. $model->imagen,['width'=>300]); ?>
@@ -37,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            //'id',
             'CI',
             'nombres',
             'apellidos',
@@ -57,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= Html::button(Yii::t('app', 'Asignar Vacacciones'), ['value'=>Url::to(['empleado/createvacaciones','id'=>$model->id]),'class' => 'btn btn-success','id'=>'modalButton']) ?>
     </div>
 
-
+<div style="margin-top:10%"></div>
 
 </div>
 
@@ -74,24 +63,25 @@ $this->params['breadcrumbs'][] = $this->title;
                 <thead>
                     <tr>
                       <th>Fecha Ingreso</th>
-
                       <th>Dias a Disfrutar</th>
                       <th>Fecha Inicial Vacaciones</th>
                       <th>Fecha Final Vacaciones</th>
                       <th>Dia de Inicio Labores</th>
                       <th>Fecha Elaboracion de Reporte</th>
+                      <th>Accion</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($listado as $vaca){
                         ?>
                         <tr>
-                        <td><?php echo $vaca->fecha_final_vacacion; ?></td>
-                        <td><?php echo $vaca->diasadisfrutar;?></td>
-                        <td><?php echo $vaca->fecha_final_vacacion;?></td>
-                        <td><?php echo $vaca->fecha_final_vacacion;?></td>
-                        <td><?php echo $vaca->fecha_final_vacacion;?></td>
-                        <td><?php echo $vaca->fecha_final_vacacion;?></td>
+                        <td><?= $model->fechaingreso; ?></td>
+                        <td><?= $vaca->diasadisfrutar;?></td>
+                        <td><?= $vaca->fecha_inicio_vacacion;?></td>
+                        <td><?= $vaca->fecha_final_vacacion;?></td>
+                        <td><?= $vaca->diaretorno;?></td>
+                        <td><?= $vaca->fecha_elaboracion_reporte;?></td>
+                        <td><a id="vacacion<?= $vaca->id; ?>" class="btn btn-success" href="<?= Url::to(['empleado/reportevacaciones','vacacion_id'=>$vaca->id,'empleado_id'=>$model->id])?>">generar reporte</a></td>
                         </tr>
                     <?php
                     }
@@ -99,4 +89,3 @@ $this->params['breadcrumbs'][] = $this->title;
                 </tbody>
              </table>
 </div>
-    

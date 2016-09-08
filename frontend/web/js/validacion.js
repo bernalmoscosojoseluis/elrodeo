@@ -5,3 +5,10 @@ $(function(){
 					.load($(this).attr('value'));
 		});
 	});
+$(function(){
+		$('#modala').click(function(){	
+				$('#modala').modal('show')
+					.find('#modalContentido')
+					.load($(this).attr('value'));
+		});
+	});

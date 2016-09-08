@@ -65,4 +65,8 @@ class Vacaciones extends \yii\db\ActiveRecord
         $d=date('d',strtotime($this->fecha_final_vacacion));
         return $d-$s;
     }
+    public function getDiaretorno()
+    {
+        return 12;
+    }
 }

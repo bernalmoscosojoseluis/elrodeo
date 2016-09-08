@@ -119,23 +119,37 @@ class EmpleadoController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        
+        if (!empty($_POST)) {
+            $mpost=Yii::$app->request->post()['Empleado'];
+            //var_dump($model);
+            //die();
+            //$model->imageFile=UploadedFile::getInstance($model,'imageFile');
+            $model->nombres=$mpost['nombres'];
+            $model->apellidos=$mpost['apellidos'];
+            $model->email=$mpost['email'];
+            $model->telefono=$mpost['telefono'];
+            $model->areatrabajo_id=intval($mpost['areatrabajo_id']);
+            $model->sueldomes=$mpost['sueldomes'];
+            //$size=$model->imageFile->size;
+            //$temp=$model->imageFile->tempName;
+            //$name=$model->imageFile->name;
+            //$model->formato=$model->imageFile->type;
+            //$f1= fopen($temp,'rb');
+            //$foto_reconvertida = fread($f1,$size);
+            //$foto_reconvertida = base64_encode($foto_reconvertida);
+            //fclose($f1);
+            //$model->imagen=$foto_reconvertida;
+            //$model->imagenombre=$name;
+            //$model->imagentamano=$size;
+            //var_dump($model);
+            //die();
+           // if ($model->validate()) {
+                $model->save(false);
+           // }
 
-
-        if ($model->load(Yii::$app->request->post())) {
-            $model->imageFile=UploadedFile::getInstance($model,'imageFile');
-            $size=$model->imageFile->size;
-            $temp=$model->imageFile->tempName;
-            $name=$model->imageFile->name;
-            $model->formato=$model->imageFile->type;
-            $f1= fopen($temp,'rb');
-            $foto_reconvertida = fread($f1,$size);
-            $foto_reconvertida = base64_encode($foto_reconvertida);
-            fclose($f1);
-            $model->imagen=$foto_reconvertida;
-            $model->imagenombre=$name;
-            $model->imagentamano=$size;
-            $model->save();
-            $model->imageFile->saveAs('uploads/' . $model->id . '.' . $model->imageFile->extension);
+            
+            //$model->imageFile->saveAs('uploads/' . $model->id . '.' . $model->imageFile->extension);
                     return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -180,15 +194,22 @@ class EmpleadoController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $model->empleado_id=$id;
             $model->fecha_elaboracion_reporte = new yii\db\Expression('NOW()');
-            $model->save();
+            //$model->save();
+            if($model->save())
+            {
+              return $this->redirect(['view', 'id' => $id]);
+            }
             //var_dump($model);
            // die();
-            return $this->redirect(['view', 'id' => $id]);
+            //return $this->redirect(['view', 'id' => $id]);
         }
         //renderisamos el modelo de vacaciones
          return $this->renderAjax('createvacaciones',[
                 'model' => $model,
             ]);
-
+    }
+    public function actionreportevaciones($vacacion_id,$empleado_id)
+    {
+        
     }
 }

@@ -61,7 +61,7 @@ class AreatrabajoController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreateajax($id)
+    public function actionCreateajax()
     {
         $model = new Areatrabajo();
 
