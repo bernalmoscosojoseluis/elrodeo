@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\Boleta;
 use common\models\Sueldo;
 use common\models\Viatico;
 use common\models\Bonos;
@@ -14,6 +15,7 @@ use common\models\Vacaciones;
 use common\models\formularioboleta;
 use common\models\VacacionesSearch;
 use common\models\EmpleadoSearch;
+use yii\db\Connection;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -231,23 +233,34 @@ class EmpleadoController extends Controller
             'model' => $model,
         ]);
     }
-    public function actionCreatereporte(){
+    public function actionCreatereporte($id,$inicio,$final){
         $mpdf=new mPDF();
-        //$model= new Empleado();
-        $sql5 = 'SELECT CI,nombres,apellidos,ocupacion,sueldomes FROM empleado WHERE id=1';
-        $sql = 'SELECT monto FROM anticipo WHERE empleado_id=1';
-        $sql1 = 'SELECT monto FROM  bonos WHERE empleado_id=1';
-        $sql2 = 'SELECT monto FROM  descuento WHERE empleado_id=3';
-        $sql3 = 'SELECT monto FROM  viatico WHERE empleado_id=1';
+        $sql5 = 'SELECT CI,nombres,apellidos,ocupacion,sueldomes FROM empleado WHERE id="' .$id. '"';
+        $sql = 'SELECT SUM(monto) AS monto FROM anticipo WHERE empleado_id="' .$id. '" AND fecha_anticipo>="' .$inicio. '" AND fecha_anticipo<="' .$final. '"';
+        $sql1 = 'SELECT SUM(monto) AS monto FROM  bonos WHERE empleado_id="' .$id. '" AND fecha_bono>="' .$inicio. '" AND fecha_bono<="' .$final. '"';
+        $sql2 = 'SELECT SUM(monto) AS monto FROM  descuento WHERE empleado_id="' .$id. '" AND fecha_descuento>="' .$inicio. '" AND fecha_descuento<="' .$final. '"';
+        $sql3 = 'SELECT SUM(monto) AS monto FROM  viatico WHERE empleado_id="' .$id. '" AND fecha_viatico>="' .$inicio. '" AND fecha_viatico<="' .$final. '"';
         $model = Anticipo::findBySql($sql)->all();
         $model1 = Bonos::findBySql($sql1)->all();
         $model2 = Descuento::findBySql($sql2)->all();
         $model3 = Viatico::findBySql($sql3)->all();
         $model5 = Empleado::findBySql($sql5)->all();
-        //$model=Anticipo::find()->where(['empleado_id'=>4])->all();
-        //$model2=Bonos::find()->where(['empleado_id'=>2])->all();
-        //$model3=Viatico::find()->where(['empleado_id'=>4])->all();
-        //$model4=Descuento::find()->where(['empleado_id'=>4])->all();
+        $acu=0;
+        if(!empty($model5))
+        {
+            foreach($model as $anti)
+            {
+                $acu = $anti->monto + $acu;
+                foreach($model2 as $desc)
+                {
+                    $acu = $desc->monto + $acu;
+                    foreach($model5 as $sueldo)
+                    {
+                        $acu = $sueldo->sueldomes - $acu;
+                    }
+                }
+            }
+        }
         $mpdf->useOnlyCoreFonts = true;
         $mpdf->SetTitle("Boleta de Pago - Reporte");
         $mpdf->SetAuthor("Jose luis");
@@ -261,9 +274,20 @@ class EmpleadoController extends Controller
         //$mpdf->forcePortraitHeaders = true;
         //girar la pagina horizontal
         //$mpdf->AddPage('L');
-        $mpdf->WriteHTML($this->renderPartial('createreporte',["model"=>$model,"model1"=>$model1,"model2"=>$model2,"model3"=>$model3,"model5"=>$model5]));
+        $mpdf->WriteHTML($this->renderPartial('createreporte',["model"=>$model,"model1"=>$model1,"model2"=>$model2,"model3"=>$model3,"model5"=>$model5,"acu"=>$acu]));
         $mpdf->Output();
         exit();
     }
 
+    public function actionCreateboletadepago($id){
+        $model=new Boleta();
+        if (!empty($_POST)){
+            $bpost=Yii::$app->request->post()['Boleta'];
+            $inicio=$bpost['fecha_inicio'];
+            $final=$bpost['fecha_final'];
+            return $this->redirect(['createreporte','id' => $id,'inicio'=>$inicio,'final'=>$final]);
+        }else {
+            return $this->renderAjax('boletadepago', ["model" => $model, "empleado_id" => $id]);
+        }
+    }
 }
