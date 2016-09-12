@@ -18,7 +18,6 @@ class AppAsset extends AssetBundle
         'dist/css/timeline.css',
         'dist/css/sb-admin-2.css',
         'bower_components/font-awesome/css/font-awesome.min.css',
-
     ];
     public $js = [
         'bower_components/metisMenu/dist/metisMenu.min.js',
