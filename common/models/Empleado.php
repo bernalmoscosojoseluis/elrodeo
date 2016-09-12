@@ -5,6 +5,8 @@ namespace common\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\web\UploadedFile;
+use common\models\Areatrabajo;
+use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "empleado".
  *
@@ -81,5 +83,18 @@ class Empleado extends \yii\db\ActiveRecord
             
         ];
     }
+      public function getAreatrabajo() {
+                return $this->hasMany(Areatrabajo::className(), ['id' => 'empleado_id']);
+        }
+        
+        public function getAreatrabajoName() {
+                return $this->Areatrabajo->nombre;
+        }
+        
+        public function getAreatrabajoList() { 
+                $models = Areatrabajo::find()->asArray()->all();
+                return ArrayHelper::map($models, 'id', 'nombre');
+        }
+
     
 }

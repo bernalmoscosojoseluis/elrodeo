@@ -11,7 +11,19 @@ body {
 #wrapper {
     width: 100%;
 }
-
+a {
+    color: #fff;
+}
+th a,td a{
+    color: #000;
+}
+th a:hover,td a:hover{
+    color: #B14AD7;
+}
+a:hover
+{
+    color: #fff;
+}
 #page-wrapper {
     padding: 0 15px;
     min-height: 568px;
@@ -95,11 +107,14 @@ body {
 }
 
 .sidebar ul li {
-    border-bottom: 1px solid #e7e7e7;
-}
 
-.sidebar ul li a.active {
-    background-color: #eee;
+    border-bottom: 1px solid #E9A033;
+}
+.sidebar ul li a {
+    background-color: #ff9800;
+}
+.sidebar ul li a:hover {
+    background-color: #D79E4A;
 }
 
 .sidebar .arrow {
