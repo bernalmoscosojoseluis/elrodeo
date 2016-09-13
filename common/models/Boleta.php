@@ -17,7 +17,8 @@ class Boleta extends model
     public function rules()
     {
         return[
-            [['fecha_inicio','fecha_final'],'required'],
+            ['fecha_inicio','required','message'=>'fecha inicio requerida'],
+            ['fecha_final','required','message'=>'fecha final requerida'],
         ];
     }
 }
