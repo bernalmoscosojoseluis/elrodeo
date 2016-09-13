@@ -12,7 +12,7 @@ $this->title = 'agregar vacacion';
 $this->params['breadcrumbs'][] = ['label' => 'Empleados', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="empleado-createvacaciones">
+<div class="vacaciones-create">
 
     
 <h1><?= Html::encode($this->title) ?></h1>
@@ -25,6 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
     'options' => ['class' => 'form-control']
     ]) ?>
     </div>
+
     <div class="col-lg-6">
     <?= $form->field($model, 'fecha_final_vacacion')->widget(\yii\jui\DatePicker::classname(), [
     'language' => 'es',
@@ -36,6 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-lg-12">
     <?= $form->field($model, 'observaciones')->textarea(['rows' => 6]) ?>
     </div>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

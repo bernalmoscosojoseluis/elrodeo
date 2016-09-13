@@ -33,6 +33,7 @@ class EmpleadoController extends Controller
     public function behaviors()
     {
         return [
+
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -40,11 +41,11 @@ class EmpleadoController extends Controller
                 ],
             ],
             'timestamp'=>[
-                'class' => TimestampBehavior::className(),
-                'createdAtAttribute' => 'create_time',
-                'updatedAtAttribute' => 'update_time',
-                'value' => new \yii\db\Expression('NOW()'),
-            ],
+                'class'=>TimestampBehavior::className(),
+                'createdAtAttribute'=>'create_time',
+                'createdAtAttribute'=>'update_time',
+                'value'=>new\yii\db\Expression('NOW()'),
+            ]
         ];
     }
 
@@ -74,6 +75,7 @@ class EmpleadoController extends Controller
         $searchModel = new VacacionesSearch();
        // var_dump(Yii::$app->request->queryParams);
        // die();
+       $listado = Vacaciones::find()->where(['empleado_id'=>$id])->all();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         //mostramos el detalle del empleado
         $model=$this->findModel($id);
@@ -82,6 +84,7 @@ class EmpleadoController extends Controller
             'model' => $model,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'listado'=>$listado,
         ]);
     }
 
@@ -116,7 +119,6 @@ class EmpleadoController extends Controller
             ]);
         }
     }
-
     /**
      * Updates an existing Empleado model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -127,25 +129,38 @@ class EmpleadoController extends Controller
     {
         $model = $this->findModel($id);
 
+        if (!empty($_POST)) {
+            $mpost=Yii::$app->request->post()['Empleado'];
+            //var_dump($model);
+            //die();
+            //$model->imageFile=UploadedFile::getInstance($model,'imageFile');
+            $model->nombres=$mpost['nombres'];
+            $model->apellidos=$mpost['apellidos'];
+            $model->email=$mpost['email'];
+            $model->telefono=$mpost['telefono'];
+            $model->areatrabajo_id=intval($mpost['areatrabajo_id']);
+            $model->sueldomes=$mpost['sueldomes'];
+            //$size=$model->imageFile->size;
+            //$temp=$model->imageFile->tempName;
+            //$name=$model->imageFile->name;
+            //$model->formato=$model->imageFile->type;
+            //$f1= fopen($temp,'rb');
+            //$foto_reconvertida = fread($f1,$size);
+            //$foto_reconvertida = base64_encode($foto_reconvertida);
+            //fclose($f1);
+            //$model->imagen=$foto_reconvertida;
+            //$model->imagenombre=$name;
+            //$model->imagentamano=$size;
+            //var_dump($model);
+            //die();
+           // if ($model->validate()) {
+                $model->save(false);
+           // }
 
-        if ($model->load(Yii::$app->request->post())) {
-            $model->imageFile=UploadedFile::getInstance($model,'imageFile');
-            $size=$model->imageFile->size;
-            $temp=$model->imageFile->tempName;
-            $name=$model->imageFile->name;
-            $model->formato=$model->imageFile->type;
-            $f1= fopen($temp,'rb');
-            $foto_reconvertida = fread($f1,$size);
-            $foto_reconvertida = base64_encode($foto_reconvertida);
-            fclose($f1);
-            $model->imagen=$foto_reconvertida;
-            $model->imagenombre=$name;
-            $model->imagentamano=$size;
-            $model->save();
-            $model->imageFile->saveAs('uploads/' . $model->id . '.' . $model->imageFile->extension);
+
+            //$model->imageFile->saveAs('uploads/' . $model->id . '.' . $model->imageFile->extension);
                     return $this->redirect(['view', 'id' => $model->id]);
         } else {
-
             return $this->render('update', [
                 'model' => $model,
             ]);
@@ -180,22 +195,30 @@ class EmpleadoController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
     public function actionCreatevacaciones($id)
     {    //creamos el modelo de la vista vacaciones
         $model=new Vacaciones();
         //si recibimos los datos por post y validamoes los mismos
         if ($model->load(Yii::$app->request->post())) {
             $model->empleado_id=$id;
-            $model->fecha_elaboracion_reporte=new yii\db\Expression('NOW()');
-            $model->save();
+            $model->fecha_elaboracion_reporte = new yii\db\Expression('NOW()');
+            //$model->save();
+            if($model->save())
+            {
+              return $this->redirect(['view', 'id' => $id]);
+            }
             //var_dump($model);
            // die();
-            return $this->redirect(['view', 'id' => $id]);
+            //return $this->redirect(['view', 'id' => $id]);
         }
         //renderisamos el modelo de vacaciones
          return $this->renderAjax('createvacaciones',[
                 'model' => $model,
             ]);
+    }
+    public function actionreportevaciones($vacacion_id,$empleado_id)
+    {
 
     }
 
