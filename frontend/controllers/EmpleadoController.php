@@ -313,4 +313,10 @@ class EmpleadoController extends Controller
             return $this->renderAjax('boletadepago', ["model" => $model, "empleado_id" => $id]);
         }
     }
+    public function actionReportevacaciones($vacacion_id,$empleado_id){
+        $mpdf=new mPDF();
+        $mpdf->WriteHTML($this->renderPartial('reportevacaciones'));
+        $mpdf->Output();
+        exit();
+    }
 }
