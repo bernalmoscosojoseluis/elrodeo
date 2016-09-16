@@ -200,11 +200,11 @@ class EmpleadoController extends Controller
     {    //creamos el modelo de la vista vacaciones
         $model=new Vacaciones();
         //si recibimos los datos por post y validamoes los mismos
-        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) 
-        {
-            Yii::$app->response->format='json';
-            return ActiveForm::validate($model);
-        }
+        // if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) 
+        // {
+        //     Yii::$app->response->format='json';
+        //     return ActiveForm::validate($model);
+        // }
         if ($model->load(Yii::$app->request->post())) {
             $model->empleado_id=$id;
             $model->fecha_elaboracion_reporte = new yii\db\Expression('NOW()');
@@ -221,10 +221,6 @@ class EmpleadoController extends Controller
          return $this->renderAjax('createvacaciones',[
                 'model' => $model,
             ]);
-    }
-    public function actionreportevaciones($vacacion_id,$empleado_id)
-    {
-
     }
 
     public function actionCreateboleta($id){
@@ -329,8 +325,6 @@ class EmpleadoController extends Controller
     public function actionReportefiniquito($id)
     {
        $mpdf=new mPDF();
-
-
         $mpdf->SetTitle("Finiquito - Reporte");
         $mpdf->WriteHTML($this->renderPartial('reportefiniquito'));
         $mpdf->Output();
