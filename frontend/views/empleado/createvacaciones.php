@@ -16,9 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
     
 <h1><?= Html::encode($this->title) ?></h1>
-<?php $form = ActiveForm::begin(); ?>
+<?php $form = ActiveForm::begin([
+        'enableAjaxValidation' => true
+        ]);?>
 
-    <div class="col-lg-6">
+    <div class="col-lg-4">
     <?= $form->field($model, 'fecha_inicio_vacacion')->widget(\yii\jui\DatePicker::classname(), [
     'language' => 'es',
     'dateFormat' => 'yyyy-MM-dd',
@@ -26,14 +28,20 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
     </div>
 
-    <div class="col-lg-6">
+    <div class="col-lg-4">
     <?= $form->field($model, 'fecha_final_vacacion')->widget(\yii\jui\DatePicker::classname(), [
     'language' => 'es',
     'dateFormat' => 'yyyy-MM-dd',
     'options' => ['class' => 'form-control']
     ]) ?>
     </div>
-
+    <div class="col-lg-4">
+    <?= $form->field($model, 'fecha_inicio_laboral')->widget(\yii\jui\DatePicker::classname(), [
+    'language' => 'es',
+    'dateFormat' => 'yyyy-MM-dd',
+    'options' => ['class' => 'form-control']
+    ]) ?>
+    </div>
     <div class="col-lg-12">
     <?= $form->field($model, 'observaciones')->textarea(['rows' => 6]) ?>
     </div>

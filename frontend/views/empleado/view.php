@@ -40,20 +40,23 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         'options'=>['class'=>'table table-striped table-hover detail-view'],
     ]) ?>
+<div class="col-lg-12">
     <div class="col-lg-3">
-
-    <br>
     <?= Html::button(Yii::t('app', 'Asignar Vacacciones'), ['value'=>Url::to(['empleado/createvacaciones','id'=>$model->id]),'class' => 'btn btn-success','id'=>'modalButton']) ?>
     </div>
     <div class="col-lg-3">
-        <br>
         <?= Html::button(Yii::t('app', 'Dar dinero'), ['value'=>Url::to(['empleado/createboleta','id'=>$model->id]),'class' => 'btn btn-success','id'=>'modalButton1']) ?>
     </div>
     <div class="col-lg-3">
-        <br>
+        
         <?= Html::button(Yii::t('app', 'boleta de pago'), ['value'=>Url::to(['empleado/createboletadepago','id'=>$model->id]),'class' => 'btn btn-success','id'=>'modalButton2']) ?>
     </div>
-
+    <div class="col-lg-3">
+        
+        <a class="btn btn-success" href="<?= Url::to(['empleado/reportefiniquito','id'=>$model->id])?>">Finiquito</a>
+    </div>
+    
+</div>
 <div style="margin-top:10%"></div>
 
 </div>
@@ -87,9 +90,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         <td><?= $vaca->diasadisfrutar;?></td>
                         <td><?= $vaca->fecha_inicio_vacacion;?></td>
                         <td><?= $vaca->fecha_final_vacacion;?></td>
-                        <td><?= $vaca->diaretorno;?></td>
+                        <td><?= $vaca->fecha_inicio_laboral;?></td>
                         <td><?= $vaca->fecha_elaboracion_reporte;?></td>
-                        <td><a id="vacacion" class="btn btn-success" href="<?= Url::to(['empleado/reportevacaciones','vacacion_id'=>$vaca->id,'empleado_id'=>$model->id])?>">generar reporte</a></td>
+                        <td><a class="btn btn-success" href="<?= Url::to(['empleado/reportevacaciones','vacacion_id'=>$vaca->id,'empleado_id'=>$model->id])?>">reporte vacacion</a>
                         </tr>
                     <?php
                     }

@@ -1,15 +1,498 @@
 <?php
 
 use yii\widgets\ActiveForm;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Viatico */
 /* @var $form ActiveForm */
-$this->title = "Reporte Vacaciones";
+//$this->title = "Reporte Vacaciones";
 /*$this->params['breadcrumbs'][] = ['label' => 'Empleados', 'url' => ['index']];*/
-$this->params['breadcrumbs'][] = $this->title;
+//$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="empleado-reportevacaciones">
-    <h2 align="center">Vacaciones</h2>
+ <table width="100%">
+   	<tr>
+    	<td colspan="2" style="text-align: right;"><div align="right"><h2>Super Pollo A la Broasted "EL RODEO"</h2></div><td>
+    </tr>
+    <tr>
+    	<td colspan="2" style="text-align: right;"><div align="right"><h2>Solicitud y Autorizacion de Vacaciones</h2></div><td>
+    </tr>
+    <tr>
+    	<td style="text-align: left;"><?= Html::img('@web/img/logo.jpg',['style'=>'width:100px;height:100px; margin-top:-12%;']);?></td>
+    </tr>
+   </table>
+<table>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+    <tr>
+        <td>
+            Nombre de la Empresa:
+        </td>
+        <td>
+            <p><b>Super Pollo "EL RODEO"</b></p>
+        </td>
+        <td></td>
+        <td>
+            Area y/o Departamento:
+        </td>
+        <td>
+            <p><b>Ayudante de Cocina</b></p>
+        </td>
+    </tr>
+</table>    
+<table>
+    <tr></tr>
+    <tr></tr>
+    <tr></tr>
+    <tr></tr>
+    <tr>
+        <td>
+            Nro de Empleado:
+        </td>
+        <td>
+            <p><b>0006</b></p>    
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            Nombres:
+        </td>
+        <td>
+            <p><b>Jorge Leandro Dorado Cuellar</b></p>    
+        </td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <td>
+            Fecha de Ingreso:
+        </td>
+        <td>
+            <p><b>29 de enero 2015</b></p>    
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            Años de Servicios:
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        
+        <td>
+            <p><b>3 Años</b></p>    
+        </td>
+    </tr>
+    <tr></tr>
+    <tr></tr>
+    <tr></tr>
+</table>
+<table>
+    <tr>
+        <td>
+            Dias que corresponden:
+        </td>
+        <td>
+            <p><b>15</b></p>    
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>  
+        <td></td>
+        <td>
+            Dias a Disfrutar:
+        </td>
+        <td>
+            <p><b>34</b></p>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td>
+            Dias Pendientes:
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            <p><b>Ninguno</b></p>    
+        </td>
+    </tr>
+    <tr></tr>
+    <tr></tr>
     
-</div><!-- empleado-reportevacaciones -->
+    <tr></tr>
+</table><table>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+           Periodo
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>  
+        <td>
+            del
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            año
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            de
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            <p><b>2015</b></p>    
+        </td>
+        <td></td>
+        <td>al</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>año</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            <p><b>2016</b></p>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr></tr>
+    <tr></tr>
+    <tr></tr>
+</table>
+<table>
+    <tr>
+        <td>
+            Dias que inician sus vacaciones:
+        </td>
+    </tr>
+    <tr>
+</table>
+<table>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>  
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>  
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>  
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>del</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            <p><b>15</b></p>    
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>de</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        
+        <td></td>
+        <td>
+            <p><b>febrero</b></p>
+        </td>
+        
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>de</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        
+        <td>
+            <p><b>2016</b></p>
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr></tr>
+    <tr></tr>
+    <tr></tr>
+</table>
+<table>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>  
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>  
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>  
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Al</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            <p><b>15</b></p>    
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>de</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        
+        <td></td>
+        <td>
+            <p><b>febrero</b></p>
+        </td>
+        
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>de</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        
+        <td>
+            <p><b>2016</b></p>
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr></tr>
+    <tr></tr>
+    <tr></tr>
+</table>
+<table>
+<tr></tr>
+    <tr></tr>
+    <tr></tr><tr></tr>
+    <tr></tr>
+    <tr></tr><tr></tr>
+    <tr></tr>
+    <tr></tr><tr></tr>
+    <tr></tr>
+    <tr></tr><tr></tr>
+    <tr></tr>
+    <tr></tr><tr></tr>
+    <tr></tr>
+    <tr></tr>
+    <tr>
+        <td>
+            Fecha en que debera de presentarse a trabajar:
+        </td>
+        <td></td>
+        <td></td>
+        <td>
+            <p><b> 21 de Febrero de 2016</b></p>
+        </td>
+    </tr>
+</table>
