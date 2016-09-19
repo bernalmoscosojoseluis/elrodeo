@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use common\models\Empleado;
 /**
  * This is the model class for table "vacaciones".
  *
@@ -66,10 +67,58 @@ class Vacaciones extends \yii\db\ActiveRecord
 
         ];
     }
+    public function getEmpleado() {
+            return $this->hasOne(Empleado::className(), ['id' => 'empleado_id']);
+    }
+    public function getFechaactual()
+    {
+        setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish'); 
+        return strftime('%d de %B de %Y');
+    }
+    public function getFecharegreso()
+    {
+        setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish'); 
+        return strftime('%d de %B de %Y',strtotime($this->fecha_inicio_laboral));
+    }
     public function getDiasadisfrutar()
     {
         $s=date('d',strtotime($this->fecha_inicio_vacacion));
         $d=date('d',strtotime($this->fecha_final_vacacion));
         return $d-$s;
     }
+    public function getDiainicio()
+    {
+        setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish'); 
+        return strftime('%d',strtotime($this->fecha_inicio_vacacion));
+    }
+    public function getMesinicio()
+    {
+        setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish'); 
+        return strftime('%B',strtotime($this->fecha_inicio_vacacion));
+    }
+    public function getAnoinicio()
+    {
+        setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish'); 
+        return strftime('%Y',strtotime($this->fecha_inicio_vacacion));
+    }
+    public function getAnofinal()
+    {
+        setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish'); 
+        return strftime('%Y',strtotime($this->fecha_final_vacacion));
+    }
+    public function getDiafinal()
+    {
+        setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish'); 
+        return strftime('%d',strtotime($this->fecha_final_vacacion));
+    }
+    public function getMesfinal()
+    {
+        setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish'); 
+        return strftime('%B',strtotime($this->fecha_final_vacacion));
+    }
+    public function getAnoservicio()
+    {
+        return $this->periodo_final-$this->periodo_inicial;
+    }
+
 }

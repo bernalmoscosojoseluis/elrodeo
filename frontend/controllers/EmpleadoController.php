@@ -195,6 +195,14 @@ class EmpleadoController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+        protected function findModelVacaciones($id)
+    {
+        if (($model = Vacaciones::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
 
     public function actionCreatevacaciones($id)
     {    //creamos el modelo de la vista vacaciones
@@ -314,20 +322,24 @@ class EmpleadoController extends Controller
             return $this->renderAjax('boletadepago', ["model" => $model, "empleado_id" => $id]);
         }
     }
-    public function actionReportevacaciones($vacacion_id,$empleado_id){
+    public function actionReportevacaciones($vacacion_id)
+    {
+        $model=$this->findModelVacaciones($vacacion_id);
         $mpdf=new mPDF();
         $mpdf->SetTitle("Vacaciones - Reporte");
-        $mpdf->WriteHTML($this->renderPartial('reportevacaciones'));
+        $mpdf->WriteHTML($this->renderPartial('reportevacaciones',["model"=>$model]));
         $mpdf->Output();
         exit();
         //return $this->render('reportevacaciones');
     }
     public function actionReportefiniquito($id)
     {
+
        $mpdf=new mPDF();
         $mpdf->SetTitle("Finiquito - Reporte");
         $mpdf->WriteHTML($this->renderPartial('reportefiniquito'));
         $mpdf->Output();
         exit(); 
+       // return $this->render('reportefiniquito');
     }
 }

@@ -92,7 +92,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <td><?= $vaca->fecha_final_vacacion;?></td>
                         <td><?= $vaca->fecha_inicio_laboral;?></td>
                         <td><?= $vaca->fecha_elaboracion_reporte;?></td>
-                        <td><a class="btn btn-success" href="<?= Url::to(['empleado/reportevacaciones','vacacion_id'=>$vaca->id,'empleado_id'=>$model->id])?>">reporte vacacion</a>
+                        <td><a class="btn btn-success" href="<?= Url::to(['empleado/reportevacaciones','vacacion_id'=>$vaca->id])?>">reporte vacacion</a>
                         </tr>
                     <?php
                     }

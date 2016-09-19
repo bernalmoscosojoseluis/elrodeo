@@ -11,6 +11,7 @@ use yii\helpers\Html;
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="col-xs-12">
+
     <table width="100%">
        	<tr>
         	<td colspan="2" style="text-align: right;"><div align="right" style="font-size: 9pt;"><h2>Super Pollo A la Broasted "EL RODEO"</h2></div><td>
@@ -38,7 +39,7 @@ use yii\helpers\Html;
                 Area y/o Departamento:
             </td>
             <td style="font-size: 9pt;">
-                <p><b>Ayudante de Cocina</b></p>
+                <p><b><?= $model->empleado->areatrabajoname; ?></b></p>
             </td>
         </tr>
     </table>    
@@ -52,7 +53,7 @@ use yii\helpers\Html;
                 Nro de Empleado:
             </td>
             <td style="font-size: 9pt;">
-                <p><b>0006</b></p>    
+                <p><b><?= $model->empleado_id; ?></b></p>    
             </td>
             <td></td>
             <td></td>
@@ -96,7 +97,7 @@ use yii\helpers\Html;
                 Nombres:
             </td>
             <td style="font-size: 9pt;">
-                <p><b>Jorge Leandro Dorado Cuellar</b></p>    
+                <p><b><?= $model->empleado->fullname; ?></b></p>    
             </td>
         </tr>
     </table>
@@ -106,7 +107,7 @@ use yii\helpers\Html;
                 Fecha de Ingreso:
             </td>
             <td style="font-size: 9pt;">
-                <p><b>29 de enero 2015</b></p>    
+                <p><b><?= $model->empleado->fechadeingreso; ?></b></p>    
             </td>
             <td></td>
             <td></td>
@@ -159,7 +160,7 @@ use yii\helpers\Html;
             <td></td>
             
             <td style="font-size: 9pt;">
-                <p><b>3 Años</b></p>    
+                <p><b><?= $model->anoservicio;?> Años</b></p>    
             </td>
         </tr>
         <tr></tr>
@@ -172,7 +173,7 @@ use yii\helpers\Html;
                 Dias que corresponden:
             </td>
             <td style="font-size: 9pt;">
-                <p><b>15</b></p>    
+                <p><b><?= $model->diasadisfrutar;?></b></p>    
             </td>
             <td></td>
             <td></td>
@@ -192,7 +193,7 @@ use yii\helpers\Html;
                 Dias a Disfrutar:
             </td>
             <td style="font-size: 9pt;">
-                <p><b>34</b></p>
+                <p><b><?= $model->diasadisfrutar;?></b></p>
             </td>
             <td></td>
             <td></td>
@@ -217,7 +218,7 @@ use yii\helpers\Html;
             <td></td>
             <td></td>
             <td style="font-size: 9pt;">
-                <p><b>Ninguno</b></p>    
+                <p><b><?= $model->diasadisfrutar;?></b></p>    
             </td>
         </tr>
         <tr></tr>
@@ -257,8 +258,8 @@ use yii\helpers\Html;
             <td></td>
             <td></td>
             <td></td>
-            <td>
-                <p><b>2015</b></p>    
+            <td style="font-size: 9pt;">
+                <p><b><?= $model->periodo_inicial;?></b></p>    
             </td>
             <td></td>
             <td style="font-size: 9pt;">al</td>
@@ -272,7 +273,7 @@ use yii\helpers\Html;
             <td></td>
             <td></td>
             <td style="font-size: 9pt;">
-                <p><b>2016</b></p>
+                <p><b><?= $model->periodo_final;?></b></p>
             </td>
             <td></td>
             <td></td>
@@ -336,7 +337,7 @@ use yii\helpers\Html;
             <td></td>
             <td></td>
             <td style="font-size: 9pt;">
-                <p><b>15</b></p>    
+                <p><b><?= $model->diainicio;?></b></p>    
             </td>
             <td></td>
             <td></td>
@@ -352,7 +353,7 @@ use yii\helpers\Html;
             
             <td></td>
             <td style="font-size: 9pt;">
-                <p><b>febrero</b></p>
+                <p><b><?= $model->mesinicio;?></b></p>
             </td>
             
             <td></td>
@@ -372,7 +373,7 @@ use yii\helpers\Html;
             <td></td>
             
             <td style="font-size: 9pt;">
-                <p><b>2016</b></p>
+                <p><b><?= $model->anoinicio;?></b></p>
             </td>
             <td></td>
             <td></td>
@@ -421,21 +422,21 @@ use yii\helpers\Html;
             <td></td>
             <td></td>
             <td></td>
-            <td>Al</td>
+            <td style="font-size: 9pt;">Al</td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
             <td style="font-size: 9pt;">
-                <p><b>15</b></p>    
+                <p><b><?= $model->diafinal; ?></b></p>    
             </td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td>de</td>
+            <td style="font-size: 9pt;">de</td>
             <td></td>
             <td></td>
             <td></td>
@@ -444,9 +445,9 @@ use yii\helpers\Html;
             
             <td></td>
             <td style="font-size: 9pt;">
-                <p><b>febrero</b></p>
+                <p><b><?= $model->mesfinal;?></b></p>
             </td>
-            
+        
             <td></td>
             <td></td>
             <td></td>
@@ -464,7 +465,7 @@ use yii\helpers\Html;
             <td></td>
             
             <td style="font-size: 9pt;">
-                <p><b>2016</b></p>
+                <p><b><?= $model->anofinal;?></b></p>
             </td>
             <td></td>
             <td></td>
@@ -494,7 +495,7 @@ use yii\helpers\Html;
             <td></td>
             <td></td>
             <td style="font-size: 9pt;">
-                <p><b> 21 de Febrero de 2016</b></p>
+                <p><b><?= $model->fecharegreso?></b></p>
             </td>
         </tr>
     </table>
@@ -521,7 +522,7 @@ use yii\helpers\Html;
         </tr>
         <tr>
             <td style="font-size: 9pt;">
-                <p><b> 21 de Febrero de 2016asdasdfasdgf safsa fasdfsa asdf adfsadf asgasdf asd fs f asdf asdfsd asfasd asdfasd sdfsdf sdfsd </b></p>
+                <p><b><?= $model->observaciones?></b></p>
             </td>
         </tr>
     </table>
@@ -615,7 +616,7 @@ use yii\helpers\Html;
             <td></td>
             <td></td>
             <td style="font-size: 9pt;">
-                Santa Cruz, Bolivia 31 de enero de 2016
+                Santa Cruz, Bolivia <?= $model->fechaactual?>
             </td>
             <td></td>
             <td></td>
@@ -763,7 +764,7 @@ ________________________________________________________________________________
                 Area y/o Departamento:
             </td>
             <td style="font-size: 9pt;">
-                <p><b>Ayudante de Cocina</b></p>
+                <p><b><?= $model->empleado->areatrabajoname; ?></b></p>
             </td>
         </tr>
     </table>    
@@ -777,7 +778,7 @@ ________________________________________________________________________________
                 Nro de Empleado:
             </td>
             <td style="font-size: 9pt;">
-                <p><b>0006</b></p>    
+                <p><b><?= $model->empleado_id; ?></b></p>    
             </td>
             <td></td>
             <td></td>
@@ -821,7 +822,7 @@ ________________________________________________________________________________
                 Nombres:
             </td>
             <td style="font-size: 9pt;">
-                <p><b>Jorge Leandro Dorado Cuellar</b></p>    
+                <p><b><?= $model->empleado->fullname; ?></b></p>    
             </td>
         </tr>
     </table>
@@ -831,7 +832,7 @@ ________________________________________________________________________________
                 Fecha de Ingreso:
             </td>
             <td style="font-size: 9pt;">
-                <p><b>29 de enero 2015</b></p>    
+                <p><b><?= $model->empleado->fechadeingreso; ?></b></p>    
             </td>
             <td></td>
             <td></td>
@@ -884,7 +885,7 @@ ________________________________________________________________________________
             <td></td>
             
             <td style="font-size: 9pt;">
-                <p><b>3 Años</b></p>    
+                <p><b><?= $model->anoservicio;?> Años</b></p>    
             </td>
         </tr>
         <tr></tr>
@@ -897,7 +898,7 @@ ________________________________________________________________________________
                 Dias que corresponden:
             </td>
             <td style="font-size: 9pt;">
-                <p><b>15</b></p>    
+                <p><b><?= $model->diasadisfrutar;?></b></p>    
             </td>
             <td></td>
             <td></td>
@@ -917,7 +918,7 @@ ________________________________________________________________________________
                 Dias a Disfrutar:
             </td>
             <td style="font-size: 9pt;">
-                <p><b>34</b></p>
+                <p><b><?= $model->diasadisfrutar;?></b></p>
             </td>
             <td></td>
             <td></td>
@@ -942,7 +943,7 @@ ________________________________________________________________________________
             <td></td>
             <td></td>
             <td style="font-size: 9pt;">
-                <p><b>Ninguno</b></p>    
+                <p><b><?= $model->diasadisfrutar;?></b></p>    
             </td>
         </tr>
         <tr></tr>
@@ -982,8 +983,8 @@ ________________________________________________________________________________
             <td></td>
             <td></td>
             <td></td>
-            <td>
-                <p><b>2015</b></p>    
+            <td style="font-size: 9pt;">
+                <p><b><?= $model->periodo_inicial;?></b></p>    
             </td>
             <td></td>
             <td style="font-size: 9pt;">al</td>
@@ -997,7 +998,7 @@ ________________________________________________________________________________
             <td></td>
             <td></td>
             <td style="font-size: 9pt;">
-                <p><b>2016</b></p>
+                <p><b><?= $model->periodo_final;?></b></p>
             </td>
             <td></td>
             <td></td>
@@ -1061,7 +1062,7 @@ ________________________________________________________________________________
             <td></td>
             <td></td>
             <td style="font-size: 9pt;">
-                <p><b>15</b></p>    
+                <p><b><?= $model->diainicio;?></b></p>    
             </td>
             <td></td>
             <td></td>
@@ -1077,7 +1078,7 @@ ________________________________________________________________________________
             
             <td></td>
             <td style="font-size: 9pt;">
-                <p><b>febrero</b></p>
+                <p><b><?= $model->mesinicio;?></b></p>
             </td>
             
             <td></td>
@@ -1097,7 +1098,7 @@ ________________________________________________________________________________
             <td></td>
             
             <td style="font-size: 9pt;">
-                <p><b>2016</b></p>
+                <p><b><?= $model->anoinicio;?></b></p>
             </td>
             <td></td>
             <td></td>
@@ -1146,21 +1147,21 @@ ________________________________________________________________________________
             <td></td>
             <td></td>
             <td></td>
-            <td>Al</td>
+            <td style="font-size: 9pt;">Al</td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
             <td style="font-size: 9pt;">
-                <p><b>15</b></p>    
+                <p><b><?= $model->diafinal; ?></b></p>    
             </td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td>de</td>
+            <td style="font-size: 9pt;">de</td>
             <td></td>
             <td></td>
             <td></td>
@@ -1169,9 +1170,9 @@ ________________________________________________________________________________
             
             <td></td>
             <td style="font-size: 9pt;">
-                <p><b>febrero</b></p>
+                <p><b><?= $model->mesfinal;?></b></p>
             </td>
-            
+        
             <td></td>
             <td></td>
             <td></td>
@@ -1189,7 +1190,7 @@ ________________________________________________________________________________
             <td></td>
             
             <td style="font-size: 9pt;">
-                <p><b>2016</b></p>
+                <p><b><?= $model->anofinal;?></b></p>
             </td>
             <td></td>
             <td></td>
@@ -1219,7 +1220,7 @@ ________________________________________________________________________________
             <td></td>
             <td></td>
             <td style="font-size: 9pt;">
-                <p><b> 21 de Febrero de 2016</b></p>
+                <p><b><?= $model->fecharegreso?></b></p>
             </td>
         </tr>
     </table>
@@ -1246,7 +1247,7 @@ ________________________________________________________________________________
         </tr>
         <tr>
             <td style="font-size: 9pt;">
-                <p><b> 21 de Febrero de 2016asdasdfasdgf safsa fasdfsa asdf adfsadf asgasdf asd fs f asdf asdfsd asfasd asdfasd sdfsdf sdfsd </b></p>
+                <p><b><?= $model->observaciones?></b></p>
             </td>
         </tr>
     </table>
@@ -1340,7 +1341,7 @@ ________________________________________________________________________________
             <td></td>
             <td></td>
             <td style="font-size: 9pt;">
-                Santa Cruz, Bolivia 31 de enero de 2016
+                Santa Cruz, Bolivia <?= $model->fechaactual?>
             </td>
             <td></td>
             <td></td>
@@ -1350,7 +1351,7 @@ ________________________________________________________________________________
             
         </tr>
     </table>
-        <table style="margin-top:7%;">
+    <table style="margin-top:7%;">
         <tr></tr>
         <tr></tr>
         <tr></tr>
