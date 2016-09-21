@@ -17,7 +17,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="empleado-createboletadepago">
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        "method" => "post",
+        "enableClientValidation" => true,
+    ]); 
+    ?>
 
     <div style="display:none;">
         <input type="text" name="empleado_id" value="<?php echo $empleado_id?>">

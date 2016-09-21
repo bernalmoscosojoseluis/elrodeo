@@ -95,6 +95,5 @@ class Empleado extends \yii\db\ActiveRecord
                 $models = Areatrabajo::find()->asArray()->all();
                 return ArrayHelper::map($models, 'id', 'nombre');
         }
-
-    
+        
 }

@@ -19,6 +19,7 @@ class Boleta extends model
         return[
             ['fecha_inicio','required','message'=>'fecha inicio requerida'],
             ['fecha_final','required','message'=>'fecha final requerida'],
+            
         ];
     }
 }

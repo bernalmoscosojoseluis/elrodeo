@@ -304,13 +304,18 @@ class EmpleadoController extends Controller
 
     public function actionCreateboletadepago($id){
         $model=new Boleta();
-        if (!empty($_POST)){
-            $bpost=Yii::$app->request->post()['Boleta'];
-            $inicio=$bpost['fecha_inicio'];
-            $final=$bpost['fecha_final'];
-            return $this->redirect(['createreporte','id' => $id,'inicio'=>$inicio,'final'=>$final]);
-        }else {
-            return $this->renderAjax('boletadepago', ["model" => $model, "empleado_id" => $id]);
+        if ($model->load(Yii::$app->request->post())) {
+            if (!empty($_POST)){
+                if ($model->validate()) {
+                    $bpost=Yii::$app->request->post()['Boleta'];
+                    $inicio=$bpost['fecha_inicio'];
+                    $final=$bpost['fecha_final'];
+                    return $this->redirect(['createreporte','id' => $id,'inicio'=>$inicio,'final'=>$final]);
+                }else{
+                    $model->getErrors();
+                }
+            }
         }
+        return $this->renderAjax('boletadepago', ["model" => $model, "empleado_id" => $id]);
     }
 }
