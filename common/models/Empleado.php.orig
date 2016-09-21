@@ -84,16 +84,28 @@ class Empleado extends \yii\db\ActiveRecord
         ];
     }
       public function getAreatrabajo() {
-                return $this->hasMany(Areatrabajo::className(), ['id' => 'empleado_id']);
+                return $this->hasOne(Areatrabajo::className(), ['id' => 'areatrabajo_id']);
         }
         
-        public function getAreatrabajoName() {
-                return $this->Areatrabajo->nombre;
+        public function getAreatrabajoname() {
+                return $this->areatrabajo->nombre;
         }
-        
-        public function getAreatrabajoList() { 
-                $models = Areatrabajo::find()->asArray()->all();
-                return ArrayHelper::map($models, 'id', 'nombre');
+        public function getFullname() {
+                return $this->nombres.' '.$this->apellidos;
         }
+<<<<<<< HEAD
         
+=======
+    public function getFechadeingreso()
+    {
+        setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish'); 
+        return strftime('%d de %B de %Y',strtotime($this->fechaingreso));;
+    }
+    public function getAreatrabajoList() { 
+            $models = Areatrabajo::find()->asArray()->all();
+            return ArrayHelper::map($models, 'id', 'nombre');
+    }
+
+    
+>>>>>>> origin/Leandro
 }
