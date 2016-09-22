@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 <div class="col-lg-12">
     <div class="col-lg-3">
-    <?= Html::button(Yii::t('app', 'Asignar Vacacciones'), ['value'=>Url::to(['empleado/createvacaciones','id'=>$model->id]),'class' => 'btn btn-success','id'=>'modalButton']) ?>
+    <?= Html::button(Yii::t('app', 'Asignar Vacaciones'), ['value'=>Url::to(['empleado/createvacaciones','id'=>$model->id]),'class' => 'btn btn-success','id'=>'modalButton']) ?>
     </div>
     <div class="col-lg-3">
         <?= Html::button(Yii::t('app', 'Dar dinero'), ['value'=>Url::to(['empleado/createboleta','id'=>$model->id]),'class' => 'btn btn-success','id'=>'modalButton1']) ?>
