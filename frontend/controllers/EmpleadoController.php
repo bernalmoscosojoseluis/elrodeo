@@ -203,33 +203,32 @@ class EmpleadoController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-
+    protected function guardar($model,$id)
+    {
+        $model->empleado_id=$id;
+        $model->fecha_elaboracion_reporte = new yii\db\Expression('NOW()');
+        return $model->save();
+    }
     public function actionCreatevacaciones($id)
     {    //creamos el modelo de la vista vacaciones
         $model=new Vacaciones();
         //si recibimos los datos por post y validamoes los mismos
-        // if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) 
-        // {
-        //     Yii::$app->response->format='json';
-        //     return ActiveForm::validate($model);
-        // }
-        if ($model->load(Yii::$app->request->post())) {
-            $model->empleado_id=$id;
-            $model->fecha_elaboracion_reporte = new yii\db\Expression('NOW()');
-            //$model->save();
-            if($model->save())
-            {
-              return $this->redirect(['view', 'id' => $id]);
-            }
-            //var_dump($model);
-           // die();
-            //return $this->redirect(['view', 'id' => $id]);
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) 
+        {
+            Yii::$app->response->format='json';
+            return ActiveForm::validate($model);
         }
+        if ($model->load(Yii::$app->request->post())&&$this->guardar($model,$id)) {
+           
+              return $this->redirect(['view', 'id' => $id]);
+     
+        }    
         //renderisamos el modelo de vacaciones
          return $this->renderAjax('createvacaciones',[
                 'model' => $model,
             ]);
     }
+    
 
     public function actionCreateboleta($id){
         $model=new formularioboleta();
